@@ -37,7 +37,7 @@ if (empty($mail) || empty($password) || empty($nome) | empty($cognome) || empty(
     try {
         //code... 
         $insert = "INSERT INTO utente(mail,password,nome,cognome,telefono,dataNascita) VALUES('$mail','$password','$nome','$cognome','$telefono','$dataNascita')";
-        echo $insert;
+        
         $result = mysqli_query($mysqli, $insert);
 
         echo $result;
