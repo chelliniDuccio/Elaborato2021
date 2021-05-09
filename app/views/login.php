@@ -1,31 +1,26 @@
 <?php include_once(__DIR__ . '/../components/header.php'); ?>
 
 <body class="text-center">
-
     <main class="form-signin">
-        <form>
-            <img class="mb-4" src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
-            <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-
-            <div class="form-floating">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">Email address</label>
+        <form class="row g-3">
+            <div class="col-md-12">
+                <label for="inputEmail4" class="col-2 col-form-label">Email</label>
+                <div class="col-12">
+                    <input class="form-control" type="email" placeholder="mail@example.com" id="inputEmail4">
+                </div>
             </div>
-            <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Password</label>
+            <div class="col-md-12">
+                <label for="example-password-input" class="col-2 col-form-label">Password</label>
+                <div class="col-12">
+                    <input class="form-control" type="password" placeholder="password" id="example-password-input">
+                </div>
             </div>
-
             <div class="checkbox mb-3">
                 <label>
                     <input type="checkbox" value="remember-me"> Remember me
                 </label>
             </div>
             <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-            <p class="mt-5 mb-3 text-muted">© 2017–2021</p>
         </form>
     </main>
-
 </body>
-
-<?php include_once(__DIR__ . '/../components/footer.php'); ?>

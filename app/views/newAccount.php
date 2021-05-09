@@ -3,57 +3,55 @@
 <body class="text-center">
 
     <main class="form-signin">
-        <form class="row g-3">
+        <form class="row g-3" action="../actions/postUser.php" method="POST">
             <div class="col-md-12">
-                <label for="inputEmail4" class="col-2 col-form-label">Email</label>
+                <label for="mail" class="col-2 col-form-label">Email</label>
                 <div class="col-12">
-                    <input class="form-control" type="email" placeholder="mail@example.com" id="inputEmail4">
+                    <input class="form-control" type="email" name="mail" placeholder="mail@example.com" id="mail">
                 </div>
             </div>
             <div class="col-md-12">
-                <label for="example-password-input" class="col-2 col-form-label">Password</label>
+                <label for="password" class="col-2 col-form-label">Password</label>
                 <div class="col-12">
-                    <input class="form-control" type="password" placeholder="password" id="example-password-input">
+                    <input class="form-control" type="password" placeholder="password" name="password" id="password">
                 </div>
             </div>
-            <div class="row g-3">
+            <div class="row g-1">
                 <div class="col-md-6">
-                    <label for="example-text-input" class="col-2 col-form-label">Nome</label>
-                    <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+                    <label for="nome" class="col-2 col-form-label">Nome</label>
+                    <input type="text" class="form-control" placeholder="Nome" name="nome" id="nome">
                 </div>
                 <div class="col-md-6">
-                    <label for="example-text-input" class="col-2 col-form-label">Cognome</label>
-                    <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+                    <label for="cognome" class="col-2 col-form-label">Cognome</label>
+                    <input type="text" class="form-control" placeholder="Cognome" name="cognome" id="cognome">
                 </div>
             </div>
             <div class="col-md-12">
-                <label for="example-tel-input" class="col-2 col-form-label">Telephone</label>
-                <div class="col-12">
-                    <input class="form-control" type="tel" placeholder="+39 -(555)-555-5555" id="example-tel-input">
+                <label for="telefono" class="col-2 col-form-label">Num. telefono</label>
+                <div class="col-24">
+                    <input class="form-control" type="tel" placeholder="+39 555-555-5555" id="telefono" name="telefono">
                 </div>
             </div>
             <div class="col-md-24">
-                <label for="example-datetime-local-input" class="col-2 col-form-label">Data nascita</label>
+                <label for="dataNascita" class="col-2 col-form-label">Data nascita</label>
                 <div class="col-12">
-                    <input class="form-control" type="date" placeholder="2010-01-01" id="example-date-input">
+                    <input class="form-control" type="date" placeholder="2000-01-01" id="dataNascita" name="dataNascita">
                 </div>
             </div>
             <div class="col-md-12">
-                <label for="exampleInputFile">File documento</label>
-                <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
-                <small id="fileHelp" class="form-text text-muted">.</small>
+                <label for="file">File documento</label>
+                <input type="file" class="form-control-file" id="file" aria-describedby="fileHelp" id="file">
             </div>
-            <fieldset class="row mb-3">
-                <div class="form-group">
-                    <label for="exampleSelect2">Tipo documneto</label>
-                    <select class="form-control" id="exampleSelect1">
-                        <option>Carta di identita</option>
-                        <option>Carta di identità elettronica</option>
-                        <option>Patente</option>
-                        <option>Passaporto</option>
-                    </select>
-                </div>
+            <div class="col-md-12">
+                <label for="exampleSelect2">Tipo documneto</label>
+                <select id="inputState" class="form-select">
+                    <option>Carta d'identità</option>
+                    <option>Carta d'identità elettronica</option>
+                    <option>Patente</option>
+                    <option>Passaporto</option>
+                </select>
+            </div>
             </fieldset>
-            <button type="submit" class="btn btn-primary">Invio</button>
+            <button type="invio" name="submit" class="btn btn-primary">Invio</button>
         </form>
 </body>
