@@ -36,17 +36,32 @@ if (empty($mail) || empty($password) || empty($nome) | empty($cognome) || empty(
     //insert data to database
     try {
         //code... 
-        $insert = "INSERT INTO utente(mail,password,nome,cognome,telefono,dataNascita) VALUES('$mail','$password','$nome','$cognome','$telefono','$dataNascita')";
-        
+        $insert = "INSERT INTO utente(mail,password,nome,cognome,telefono,dataNascita) 
+                    VALUES('$mail','$password','$nome','$cognome','$telefono','$dataNascita')";
+
         $result = mysqli_query($mysqli, $insert);
 
-        echo $result;
+        echo "<font color='green'><b>Creazione dell'occount avvenuta con successo</b>";
+
+        echo "<table border=0>";
+        echo "<tr bgcolor='#CCCCCC'>";
+        echo "<td>Mail</td>";
+        echo "<td>password</td>";
+        echo "<td>Nome</td>";
+        echo "<td>Cognome</td>";
+        echo "<td>telefono</td>";
+        echo "<td>Data di nascita</td>";
+        echo "</tr>";
+
+        echo "<td>" . $mail . "</td>";
+        echo "<td>" . $password . "</td>";
+        echo "<td>" . $nome . "</td>";
+        echo "<td>" . $cognome . "</td>";
+        echo "<td>" . $telefono . "</td>";
+        echo "<td>" . $dataNascita . "</td>";
+        echo "</table>";
     } catch (\Throwable $th) {
         //throw $th;
         echo $th;
     }
-
-    //display success message
-    echo "<font color='green'>Data added successfully.";
-    echo "<br/><a href='index.php'>View Result</a>";
 }
