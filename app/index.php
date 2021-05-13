@@ -1,4 +1,4 @@
-<?php include_once(__DIR__ . '/../components/header.php'); ?>
+<?php include_once(__DIR__ . '/./components/header.php'); ?>
 
 <body class="text-center">
     <nav class="navbar navbar navbar-dark bg-dark">
