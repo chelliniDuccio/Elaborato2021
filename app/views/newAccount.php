@@ -58,8 +58,11 @@
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <label for="file">File documento</label>
-                        <input type="file" class="form-control-file" id="file" aria-describedby="fileHelp" id="file">
+                        <label for="documento" class="col-form-label">Documento</label>
+                        <input type="text" class="form-control" minlength="7" placeholder="numero documento" name="documento" id="documento" required>
+                        <div class="invalid-feedback">
+                            Inserisci un documneto
+                        </div>
                     </div>
                     <div class="col-md-12">
                         <label for="exampleSelect2">Tipo documneto</label>

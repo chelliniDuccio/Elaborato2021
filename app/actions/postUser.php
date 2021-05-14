@@ -7,10 +7,11 @@ $nome = $_POST['nome'];
 $cognome = $_POST['cognome'];
 $telefono = $_POST['telefono'];
 $dataNascita = $_POST['dataNascita'];
+$documento = $_POST['documento'];
 
 
 // checking empty fields
-if (empty($mail) || empty($password) || empty($nome) | empty($cognome) || empty($telefono) || empty($dataNascita)) {
+if (empty($mail) || empty($password) || empty($nome) | empty($cognome) || empty($telefono) || empty($documento)) {
     if (empty($mail)) {
         echo "<font color='red'>Campo mail non compilato.</font><br/>";
     }
@@ -29,6 +30,9 @@ if (empty($mail) || empty($password) || empty($nome) | empty($cognome) || empty(
     if (empty($dataNascita)) {
         echo "<font color='red'>Campo data di nascita non compilato.</font><br/>";
     }
+    if (empty($documento)) {
+        echo "<font color='red'>Campo documento non compilato.</font><br/>";
+    }
     //link to the previous page
     echo "<br/><a href='javascript:self.history.back();'>Go Back</a>";
 } else {
@@ -36,8 +40,8 @@ if (empty($mail) || empty($password) || empty($nome) | empty($cognome) || empty(
     //insert data to database
     try {
         //code... 
-        $insert = "INSERT INTO utente(mail,password,nome,cognome,telefono,dataNascita) 
-                    VALUES('$mail','$password','$nome','$cognome','$telefono','$dataNascita')";
+        $insert = "INSERT INTO utente(mail,password,nome,cognome,telefono,dataNascita,documento) 
+                    VALUES('$mail','$password','$nome','$cognome','$telefono','$dataNascita','$documento')";
 
         $result = mysqli_query($mysqli, $insert);
 
@@ -51,6 +55,7 @@ if (empty($mail) || empty($password) || empty($nome) | empty($cognome) || empty(
         echo "<td>Cognome</td>";
         echo "<td>telefono</td>";
         echo "<td>Data di nascita</td>";
+        echo "<td>documento</td>";
         echo "</tr>";
 
         echo "<td>" . $mail . "</td>";
@@ -59,6 +64,7 @@ if (empty($mail) || empty($password) || empty($nome) | empty($cognome) || empty(
         echo "<td>" . $cognome . "</td>";
         echo "<td>" . $telefono . "</td>";
         echo "<td>" . $dataNascita . "</td>";
+        echo "<td>" . $documento . "</td>";
         echo "</table>";
     } catch (\Throwable $th) {
         //throw $th;
