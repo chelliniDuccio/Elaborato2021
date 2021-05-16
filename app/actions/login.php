@@ -1,6 +1,6 @@
 <?php include_once(__DIR__ . '/../components/connesioneServer.php');
 
-require_once(__DIR__ . '../shared/auth.php');
+require_once(__DIR__ . '/../shared/auth.php');
 
 $mail = $_POST['mail'];
 $password = $_POST['password'];
@@ -17,7 +17,7 @@ try {
         echo "<font color='red'>Account non trovato</font><br/>";
         echo "<br/><a href='javascript:self.history.back();'>Riprova</a>";
     } else {
-        saveUser(mysql_fetch_array($result));
+        saveUser(mysqli_fetch_array($result));
     }
 } catch (\Throwable $th) {
     echo $th;
