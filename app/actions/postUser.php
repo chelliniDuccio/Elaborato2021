@@ -1,5 +1,6 @@
+
 <?php include_once(__DIR__ . '/../components/connesioneServer.php');
-//include_once("config.php");
+// connessione al server
 
 $mail = $_POST['mail'];
 $password = $_POST['password'];
@@ -10,7 +11,7 @@ $dataNascita = $_POST['dataNascita'];
 $documento = $_POST['documento'];
 
 
-// checking empty fields
+// controloo compilazione campi
 if (empty($mail) || empty($password) || empty($nome) | empty($cognome) || empty($telefono) || empty($documento)) {
     if (empty($mail)) {
         echo "<font color='red'>Campo mail non compilato.</font><br/>";
@@ -45,6 +46,7 @@ if (empty($mail) || empty($password) || empty($nome) | empty($cognome) || empty(
 
         $result = mysqli_query($mysqli, $insert);
 
+        //stampa tabella aggiunta nel db    
         echo "<font color='green'><b>Creazione dell'occount avvenuta con successo</b>";
 
         echo "<table border=0>";

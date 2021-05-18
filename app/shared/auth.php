@@ -16,7 +16,7 @@ function saveUser($user)
 function getCurrentUser()
 {
     global $cookie_mail, $mysqli, $is_logged, $is_admin, $current_user;
-    $userMail = $_COOKIE[$cookie_mail];
+    $userMail = $_COOKIE[$cookie_mail] ?? '';
 
     $user = "SELECT *
     FROM utente
