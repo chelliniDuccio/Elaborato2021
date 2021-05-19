@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Diagrmma Gantt elaborato Chellini</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #ccc;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        /* custom class */
+        .gantt .bar-milestone .bar {
+            fill: tomato;
+        }
+    </style>
+    <link rel="stylesheet" href="dist/frappe-gantt.css" />
+    <script src="dist/frappe-gantt.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Diagramma di Gantt Chellini</h2>
+        <div class="gantt-target"></div>
+    </div>
+    <script>
+        var tasks = [
+            {
+                start: '2021-05-01',
+                end: '2021-05-03',
+                name: 'Analisi commessa',
+                id: 'task_1.1',
+                progress: 100
+            },
+            {
+                start: '2021-05-03',
+                end: '2021-05-04',
+                name: 'Preparazione ambiente di sviluppo',
+                id: 'task_1.2',
+                progress: 100,
+                dependencies: 'task_1.1'
+            },
+            {
+                start: '2021-05-06',
+                end: '2021-05-07',
+                name: 'Realizzazione schema ER',
+                id: 'task_2.1',
+                progress: 90,
+                dependencies: 'task_1.2'
+            },
+            {
+                start: '2021-05-08',
+                end: '2021-05-09',
+                name: 'Realizzazione modello concettuale',
+                id: 'task_2.2',
+                progress: 50,
+                dependencies: 'task_2.1'
+            },
+            {
+                start: '2021-05-10 ',
+                end: '2021-05-25',
+                name: 'Realizzazione sito web',
+                id: 'task_3.1',
+                progress: 40,
+                dependencies: 'task_2.2'
+            },
+            {
+                start: '2021-05-12',
+                end: '2021-05-25',
+                name: 'Realizzazione batabase',
+                id: 'task_3.2',
+                progress: 30,
+                dependencies: 'task_2.2'
+            },
+            {
+                start: '2021-05-18',
+                end: '2021-05-25',
+                name: 'Realizzazione schema di rete',
+                id: 'task_3.3',
+                progress: 20,
+                dependencies: 'task_2.2'
+            },
+            {
+                start: '2021-05-26',
+                end: '2021-05-30',
+                name: 'Collaudo e rilascio',
+                id: 'task_4.1',
+                progress: 0,
+                dependencies: 'task_3.2'
+            },
+            {
+                start: '2021-05-27',
+                end: '2021-05-31',
+                name: 'Elaborato scritto',
+                id: 'task_4.2',
+                progress: 0,
+                dependencies: 'task_4.1'
+            }
+        ];
+        var gantt_chart = new Gantt(".gantt-target", tasks, {
+            on_click: function (task) {
+                console.log(task);
+            },
+            on_date_change: function (task, start, end) {
+                console.log(task, start, end);
+            },
+            on_progress_change: function (task, progress) {
+                console.log(task, progress);
+            },
+            on_view_change: function (mode) {
+                console.log(mode);
+            },
+            view_mode: 'Week',
+            language: 'en'
+        });
+        console.log(gantt_chart); 
+    </script>
+</body>
+
+</html>
