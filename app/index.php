@@ -11,13 +11,18 @@ getCurrentUser();
             <img src="https://i.pinimg.com/236x/ae/77/fb/ae77fbaba06ef1b667c9316fbf45f064.jpg" alt="" width="40" heigh="40" class="d-inline-block align-text-top">
             <a class="navbar-brand me-auto" href="#">Florence Hotel</a>
             <div class="">
-                <button class="btn btn-sm btn-outline-secondary" type="button" onclick="location.href='./views/newAccount.php'">Ricerca </button>
-                <button class="btn btn-sm btn-outline-secondary" type="button" onclick="location.href='./views/login.php'">Profilo</button>
-                <button class="btn btn-sm btn-outline-secondary" type="button" onclick="location.href='./views/login.php'">Profilo</button>
+                <?php if (!$is_logged) : ?>
+                    <button class="btn btn-sm btn-outline-secondary" type="button" onclick="location.href='./views/newAccount.php'">Regisrati </button>
+                    <button class="btn btn-sm btn-outline-secondary" type="button" onclick="location.href='./views/login.php'">Accedi</button>
+                <?php endif; ?>
+                <?php if ($is_logged) : ?>
+                    <button class="btn btn-sm btn-outline-secondary" type="button" onclick="location.href='./views/trovaCamera.php'">Ricerca </button>
+                    <button class="btn btn-sm btn-outline-secondary" type="button" onclick="location.href='./views/login.php'">Esci</button>
+                <?php endif; ?>
+                <?php if ($is_logged && $is_admin) : ?>
+                    <button class="btn btn-sm btn-outline-secondary" type="button" onclick="location.href='./views/login.php'">Gestione Hotels</button>
 
-                <button class="btn btn-sm btn-outline-secondary" type="button" onclick="location.href='./views/login.php'">Gestione Hotels</button>
-
-
+                <?php endif; ?>
 
             </div>
 

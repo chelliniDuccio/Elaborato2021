@@ -1,5 +1,9 @@
+include_once(__DIR__ . '/../components/header.php');
 <?php include_once(__DIR__ . '/../components/header.php'); ?>
+<?php include_once(__DIR__ . "/../components/maps.php"); ?>
+<?php include_once(__DIR__ . '/../components/navbar.php'); ?>
 <?php include_once(__DIR__ . '/../components/connesioneServer.php');
+
 //include_once("config.php");
 
 $tipoCamera = $_POST['tipoCamera'];
@@ -50,44 +54,58 @@ try {
 
     $result = $mysqli->query($sql);
 
+
     if ($result->num_rows > 0) {
+        echo '<div class="container"> <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">';
+
         while ($row = $result->fetch_assoc()) {
             ?>
-            <div class="container">
-                <div class="card">
-                    <div class="card-header"><b>
-                            <?php
-                                        echo $row["nome"];
-                                        ?>
-                        </b></div>
-                    <div class="card-body">
-                        <h6 class="card-text">
-                            <?php
-                                        echo "Camera: " . $row["numCamera"];
-                                        ?>
-                        </h6>
-                        <p class="card-text">
-                            <?php
-                                        echo "Tipo: " . $row["tipoCamera"];
-                                        ?>
-                        </p>
-                        <p class="card-text">
-                            <?php
-                                        echo "Costo: " . $row["costoNotte"] . "€";
-                                        ?>
-                        </p>
-                        <a href="#" class="btn btn-primary">Prenota</a>
+            <div class="col">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <b>
+                            <?php echo $row["nome"] . " " . $row["stelle"] . "★";      ?>
+                        </b>
                     </div>
-                    <div class="card-footer text-muted">
-                        <?php
-                                    echo "Num. telefono: " . $row["telefono"] . "<br>";
-                                    echo "Mail: " . $row["mail"];
-                                    ?>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <?php echo "Camera: " . $row["numCamera"];      ?>
+                        </h5>
+                        <p class="card-text">
+                            <?php echo "Tipo: " . $row["tipoCamera"];      ?>
+                        </p>
+                        <p class="card-text">
+                            <?php echo "Costo: " . $row["costoNotte"] . "€";      ?>
+                        </p>
+                        <p class="card-text">
+                            <?php echo maps($row["nome"]); ?>
+                        </p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">An item</li>
+                        <li class="list-group-item">A second item</li>
+                        <li class="list-group-item">A third item</li>
+                    </ul>
+                    <div class="card-footer d-flex justify-content-evenly">
+                        <a href="tel:<?php echo $row["telefono"] ?>" type="button" class="btn btn-outline-secondary">
+                            <i class="bi bi-telephone"></i>
+                            chiamaci
+                        </a>
+                        <a href="mail:<?php echo $row["mail"] ?>" type="button" class="btn btn-outline-secondary">
+                            <i class="bi bi-envelope"></i>
+                            contattaci
+                        </a>
+                        <a href="#" type="button" class="btn btn-outline-secondary">
+                            <i class="bi bi-cart-check"></i>
+                            Prenota
+                        </a>
                     </div>
                 </div>
             </div>
 <?php
+
         }
+        echo '         </div> </div> ';
     } else {
         echo 'nessun risultato trovato';
     }

@@ -4,7 +4,7 @@ $username = "id16007570_chellini1";
 $password = "j-bwKb9G2dLU-4a";
 $dbname = "id16007570_hotel";
 
-$local = true;
+$local = false;
 if ($local) {
     $servername = "localhost";
     $username = "root";
