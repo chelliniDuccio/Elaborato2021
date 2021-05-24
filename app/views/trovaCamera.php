@@ -1,10 +1,10 @@
 <?php include_once(__DIR__ . '/../components/header.php'); ?>
-
+<link href="../css/layout.css" rel="stylesheet">
 <body class="text-center">
     <div class="card m-auto">
         <div class="card-body">
             <main class="form-signin">
-                <form class="row g-3 needs-validation" action="../actions/trovaCamera.php" novalidate method="POST">
+                <form class="row g-3 needs-validation" action="../actions/trovaCamera.php" novalidate method="GET">
                     <div class="col-md-12">
                         <label for="exampleSelect2">Tipo camera</label>
                         <select id="inputState" name="tipoCamera" class="form-select">

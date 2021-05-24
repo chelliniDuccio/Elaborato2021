@@ -1,4 +1,3 @@
-include_once(__DIR__ . '/../components/header.php');
 <?php include_once(__DIR__ . '/../components/header.php'); ?>
 <?php include_once(__DIR__ . "/../components/maps.php"); ?>
 <?php include_once(__DIR__ . '/../components/navbar.php'); ?>
@@ -6,11 +5,11 @@ include_once(__DIR__ . '/../components/header.php');
 
 //include_once("config.php");
 
-$tipoCamera = $_POST['tipoCamera'];
-$dataInizio = $_POST['dataInizio'];
-$dataFine = $_POST['dataFine'];
-$stelleMinime = $_POST['stelleMinime'];
-$costoMassimo = $_POST['costoMassimo'];
+$tipoCamera = $_GET['tipoCamera'];
+$dataInizio = $_GET['dataInizio'];
+$dataFine = $_GET['dataFine'];
+$stelleMinime = $_GET['stelleMinime'];
+$costoMassimo = $_GET['costoMassimo'];
 
 
 // checking empty fields
@@ -46,11 +45,32 @@ $costoMassimo = $_POST['costoMassimo'];
 try {
     //code... 
     $sql = "SELECT *
-                FROM camera, hotel
-                WHERE hotel.partitaIva = camera.hotel 
-                AND tipoCamera = '$tipoCamera'
-                AND costoNotte <= '$costoMassimo'
-                AND hotel.stelle >= '$stelleMinime'";
+            FROM camere, hotel
+            WHERE hotel.partitaIva = camere.hotel 
+            AND tipoCamera = '$tipoCamera'
+            AND costoNotte <= '$costoMassimo'
+            AND hotel.stelle >= '$stelleMinime'
+            AND camere.codCamera NOT IN
+            (
+                SELECT camere.codCamera
+                FROM camere, prenotazione
+                WHERE camere.codCamera = prenotazione.camera
+                AND (prenotazione.dataInizio >= '$dataInizio' AND prenotazione.dataFine <= '$dataInizio')
+            )
+            AND camere.codCamera NOT IN
+            (
+                SELECT camere.codCamera
+                FROM camere, prenotazione
+                WHERE camere.codCamera = prenotazione.camera
+                AND (prenotazione.dataInizio <= '$dataFine' AND prenotazione.dataFine >= '$dataFine')
+            )
+            AND camere.codCamera NOT IN
+            (
+                SELECT camere.codCamera
+                FROM camere, prenotazione
+                WHERE camere.codCamera = prenotazione.camera
+                AND (prenotazione.dataInizio <= '$dataInizio' AND prenotazione.dataFine >= '$dataFine')
+            )";
 
     $result = $mysqli->query($sql);
 
@@ -82,7 +102,9 @@ try {
                         </p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">An item</li>
+                        <li class="list-group-item">
+                            An item
+                        </li>
                         <li class="list-group-item">A second item</li>
                         <li class="list-group-item">A third item</li>
                     </ul>
