@@ -107,10 +107,11 @@ try {
                             <i class="bi bi-telephone"></i>
                             chiamaci
                         </a>
-                        <a href="mail:<?php echo $row["mail"] ?>" type="button" class="btn btn-outline-secondary">
+                        <a href="mailto:<?php echo $row["mail"] ?>" type="button" class="btn btn-outline-secondary">
                             <i class="bi bi-envelope"></i>
                             contattaci
                         </a>
+                        <a href="prenotaCamera.php" type="button" class="btn btn-outline-secondary">
                             <i class="bi bi-cart-check"></i>
                             Prenota
                         </a>

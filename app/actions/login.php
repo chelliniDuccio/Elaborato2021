@@ -1,5 +1,4 @@
 <?php include_once(__DIR__ . '/../components/connesioneServer.php');
-
 require_once(__DIR__ . '/../shared/auth.php');
 
 $mail = $_POST['mail'];

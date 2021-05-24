@@ -8,9 +8,14 @@ $current_user = null;
 
 function saveUser($user)
 {
+    saveUserByMail($user["mail"]);
+}
+
+function saveUserByMail($mail)
+{
     global $cookie_mail, $day;
 
-    setcookie($cookie_mail, $user["mail"], time() + $day, '/');
+    setcookie($cookie_mail, $mail, time() + $day, '/');
 }
 
 function getCurrentUser()
