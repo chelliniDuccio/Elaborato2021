@@ -45,32 +45,26 @@ $costoMassimo = $_GET['costoMassimo'];
 try {
     //code... 
     $sql = "SELECT *
-            FROM camere, hotel
-            WHERE hotel.partitaIva = camere.hotel 
-            AND tipoCamera = '$tipoCamera'
-            AND costoNotte <= '$costoMassimo'
-            AND hotel.stelle >= '$stelleMinime'
-            AND camere.codCamera NOT IN
-            (
-                SELECT camere.codCamera
-                FROM camere, prenotazione
-                WHERE camere.codCamera = prenotazione.camera
-                AND (prenotazione.dataInizio >= '$dataInizio' AND prenotazione.dataFine <= '$dataInizio')
-            )
-            AND camere.codCamera NOT IN
-            (
-                SELECT camere.codCamera
-                FROM camere, prenotazione
-                WHERE camere.codCamera = prenotazione.camera
-                AND (prenotazione.dataInizio <= '$dataFine' AND prenotazione.dataFine >= '$dataFine')
-            )
-            AND camere.codCamera NOT IN
-            (
-                SELECT camere.codCamera
-                FROM camere, prenotazione
-                WHERE camere.codCamera = prenotazione.camera
-                AND (prenotazione.dataInizio <= '$dataInizio' AND prenotazione.dataFine >= '$dataFine')
-            )";
+    FROM camere, hotel
+    WHERE hotel.partitaIva = camere.hotel
+    AND tipoCamera = '$tipoCamera'
+    AND costoNotte <= '$costoMassimo'
+    AND hotel.stelle >= '$stelleMinime'
+    AND camere.codCamera NOT IN(
+        SELECT camere.codCamera
+        FROM camere, prenotazione
+        WHERE camere.codCamera = prenotazione.camera
+        AND (prenotazione.dataInizio >= '$dataInizio' AND prenotazione.dataInizio <= '$dataFine'))
+    AND camere.codCamera NOT IN(
+        SELECT camere.codCamera
+        FROM camere, prenotazione
+        WHERE camere.codCamera = prenotazione.camera
+        AND (prenotazione.dataFine >= '$dataInizio' AND prenotazione.dataFine <= '$dataFine'))
+    AND camere.codCamera NOT IN(
+        SELECT camere.codCamera
+        FROM camere, prenotazione
+        WHERE camere.codCamera = prenotazione.camera
+        AND (prenotazione.dataInizio <= '$dataInizio' AND prenotazione.dataFine >= '$dataFine'))";
 
     $result = $mysqli->query($sql);
 
@@ -117,7 +111,6 @@ try {
                             <i class="bi bi-envelope"></i>
                             contattaci
                         </a>
-                        <a href="#" type="button" class="btn btn-outline-secondary">
                             <i class="bi bi-cart-check"></i>
                             Prenota
                         </a>
