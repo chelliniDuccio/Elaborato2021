@@ -1,46 +1,23 @@
 <?php include_once(__DIR__ . '/../components/header.php'); ?>
 <?php include_once(__DIR__ . "/../components/maps.php"); ?>
 <?php include_once(__DIR__ . '/../components/navbar.php'); ?>
-<?php include_once(__DIR__ . '/../components/connesioneServer.php');
+<?php include_once(__DIR__ . '/../components/connesioneServer.php'); ?>
+<?php include_once(__DIR__ . '/../components/header.php');
+require_once(__DIR__ . '/../shared/auth.php');
+getCurrentUser();
 
-//include_once("config.php");
-
-$tipoCamera = $_GET['tipoCamera'];
-$dataInizio = $_GET['dataInizio'];
-$dataFine = $_GET['dataFine'];
-$stelleMinime = $_GET['stelleMinime'];
-$costoMassimo = $_GET['costoMassimo'];
-
+$mail = $current_user['mail'];
 try {
-    //code... 
-    $sql = "SELECT *
-    FROM camere, hotel
-    WHERE hotel.partitaIva = camere.hotel
-    AND tipoCamera = '$tipoCamera'
-    AND costoNotte <= '$costoMassimo'
-    AND hotel.stelle >= '$stelleMinime'
-    AND camere.codCamera NOT IN(
-        SELECT camere.codCamera
-        FROM camere, prenotazione
-        WHERE camere.codCamera = prenotazione.camera
-        AND (prenotazione.dataInizio >= '$dataInizio' AND prenotazione.dataInizio <= '$dataFine'))
-    AND camere.codCamera NOT IN(
-        SELECT camere.codCamera
-        FROM camere, prenotazione
-        WHERE camere.codCamera = prenotazione.camera
-        AND (prenotazione.dataFine >= '$dataInizio' AND prenotazione.dataFine <= '$dataFine'))
-    AND camere.codCamera NOT IN(
-        SELECT camere.codCamera
-        FROM camere, prenotazione
-        WHERE camere.codCamera = prenotazione.camera
-        AND (prenotazione.dataInizio <= '$dataInizio' AND prenotazione.dataFine >= '$dataFine'))";
+    $sql = "SELECT *,((prenotazione.dataFine - prenotazione.dataInizio) * camere.costoNotte) AS costoTotale
+            FROM prenotazione, camere, hotel
+            WHERE prenotazione.camera = camere.codCamera
+            AND prenotazione.utente = '$mail'
+            AND camere.hotel = hotel.partitaIva";
 
     $result = $mysqli->query($sql);
 
-
     if ($result->num_rows > 0) {
-        echo '<div class="container"> <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">';
-
+        echo '<div class="container" style = "margin-top: 25px;"> <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">';
         while ($row = $result->fetch_assoc()) {
             ?>
             <div class="col">
@@ -58,27 +35,16 @@ try {
                             <?php echo "Tipo: " . $row["tipoCamera"];      ?>
                         </p>
                         <p class="card-text">
-                            <?php echo "Costo: " . $row["costoNotte"] . "€";      ?>
+                            <?php echo "Costo totale: " . $row["costoTotale"] . "€";      ?>
                         </p>
                         <p class="card-text">
                             <?php echo maps($row["nome"]); ?>
                         </p>
                     </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
-                            An item
-                        </li>
-                        <li class="list-group-item">A second item</li>
-                        <li class="list-group-item">A third item</li>
-                    </ul>
                     <div class="card-footer d-flex justify-content-evenly">
-                        <a href="tel:<?php echo $row["telefono"] ?>" type="button" class="btn btn-outline-secondary">
-                            <i class="bi bi-telephone"></i>
-                            chiamaci
-                        </a>
                         <a href="mailto:<?php echo $row["mail"] ?>" type="button" class="btn btn-outline-secondary">
                             <i class="bi bi-envelope"></i>
-                            contattaci
+                            Paga
                         </a>
                         <a href="prenotaCamera.php?<?php echo http_build_query(array(
                                                                     'dataInizio' => $dataInizio,
@@ -86,7 +52,7 @@ try {
                                                                     'camera' => $row["codCamera"],
                                                                 )) ?>" type="button" class="btn btn-outline-secondary">
                             <i class="bi bi-cart-check"></i>
-                            Prenota
+                            Elimina
                         </a>
                     </div>
                 </div>
