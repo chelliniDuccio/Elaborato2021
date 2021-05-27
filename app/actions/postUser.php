@@ -49,7 +49,7 @@ if (empty($mail) || empty($password) || empty($nome) | empty($cognome) || empty(
         $result = mysqli_query($mysqli, $insert);
         saveUserByMail($mail);
 
-        echo "Grazie per aver creato un nuovo accuount " . $nome . " " . $cognome;
+        echo "Grazie per aver creato un nuovo account " . $nome . " " . $cognome;
 
         ?>
         <div class="container-fluid">

@@ -1,5 +1,6 @@
 <?php include_once(__DIR__ . '/../components/header.php'); ?>
 <link href="../css/layout.css" rel="stylesheet">
+
 <body class="text-center">
     <div class="card m-auto">
         <div class="card-body">

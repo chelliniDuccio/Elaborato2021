@@ -33,7 +33,8 @@ try {
         SELECT camere.codCamera
         FROM camere, prenotazione
         WHERE camere.codCamera = prenotazione.camera
-        AND (prenotazione.dataInizio <= '$dataInizio' AND prenotazione.dataFine >= '$dataFine'))";
+        AND (prenotazione.dataInizio <= '$dataInizio' AND prenotazione.dataFine >= '$dataFine'))
+    ORDER BY camere.costoNotte";
 
     $result = $mysqli->query($sql);
 
@@ -64,7 +65,29 @@ try {
                             <?php echo maps($row["nome"]); ?>
                         </p>
                     </div>
+                    <h5 class="card-subtitle">
+                        servizi camera
+                    </h5>
                     <ul class="list-group list-group-flush">
+                        <?php
+                                    $sqlServiziHotel = "SELECT *
+                                                            FROM camere, servizi, serviziCamera
+                                                            WHERE camere.codCamera = serviziCamera.camera
+                                                            AND servizi.codServizio = serviziCamera.servizio
+                                                            AND camere.codCamera = " . $row['codCamera'];
+
+                                    $resultServizi = $mysqli->query($sqlServiziHotel);
+
+                                    while ($rowServizi = $resultServizi->fetch_assoc()) {
+                                        ?>
+                            <li class='list-group-item'>
+                                <?php echo $rowServizi['nomeServizio'] ?>
+                                <i class='<?php echo $rowServizi["icona"] ?>'></i>
+                            </li>
+                        <?php
+                                    }
+
+                                    ?>
                         <li class="list-group-item">
                             An item
                         </li>
