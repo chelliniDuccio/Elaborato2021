@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 26, 2021 at 02:21 PM
+-- Generation Time: May 28, 2021 at 03:19 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.23
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `id16007570_hotel`
 --
+CREATE DATABASE IF NOT EXISTS `id16007570_hotel` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+USE `id16007570_hotel`;
 
 -- --------------------------------------------------------
 
@@ -125,9 +127,102 @@ CREATE TABLE `prenotazione` (
 INSERT INTO `prenotazione` (`codPrenotazione`, `camera`, `dataInizio`, `dataFine`, `utente`) VALUES
 (8, 24, '2021-05-06', '2021-05-07', 'Duccio.chellini@gmail.com'),
 (9, 4, '2021-05-27', '2021-05-28', 'marco64.chellini@gmail.com'),
-(10, 9, '2021-05-24', '2021-05-28', 'Duccio.chellini@gmail.com'),
-(11, 7, '2021-05-27', '2021-05-28', 'Duccio.chellini@gmail.com'),
-(16, 5, '2021-05-29', '2021-05-09', 'Duccio.chellini@gmail.com');
+(17, 7, '2021-05-19', '2021-05-26', 'marco64.chellini@gmail.com'),
+(19, 14, '2021-06-18', '2021-06-30', 'gabulianne@gmail.com'),
+(20, 6, '2021-05-27', '2021-05-29', 'Duccio.chellini@gmail.com'),
+(21, 14, '2021-05-28', '2021-05-29', 'nerouniverso@libero.it');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `servizi`
+--
+
+CREATE TABLE `servizi` (
+  `codServizio` int(11) NOT NULL,
+  `nomeServizio` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `icona` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `tipoServizio` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `servizi`
+--
+
+INSERT INTO `servizi` (`codServizio`, `nomeServizio`, `icona`, `tipoServizio`) VALUES
+(1, 'piscina', 'fas fa-swimmer', 0),
+(2, 'parcheggio', 'fas fa-car', 0),
+(3, 'aria condizionata', 'fas fa-snowflake', 1),
+(4, 'televisione', 'fas fa-tv', 1),
+(5, 'animali', 'fas fa-paw', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `serviziCamera`
+--
+
+CREATE TABLE `serviziCamera` (
+  `servizio` int(11) NOT NULL,
+  `camera` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `serviziCamera`
+--
+
+INSERT INTO `serviziCamera` (`servizio`, `camera`) VALUES
+(3, 3),
+(3, 5),
+(3, 7),
+(3, 9),
+(3, 11),
+(3, 13),
+(3, 15),
+(3, 17),
+(3, 19),
+(3, 21),
+(3, 23),
+(3, 25),
+(4, 2),
+(4, 4),
+(4, 6),
+(4, 8),
+(4, 10),
+(4, 12),
+(4, 14),
+(4, 16),
+(4, 18),
+(4, 20),
+(3, 1),
+(4, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `serviziHotel`
+--
+
+CREATE TABLE `serviziHotel` (
+  `servizio` int(11) NOT NULL,
+  `hotel` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `serviziHotel`
+--
+
+INSERT INTO `serviziHotel` (`servizio`, `hotel`) VALUES
+(1, 1),
+(1, 2),
+(1, 3),
+(1, 4),
+(2, 1),
+(2, 3),
+(2, 5),
+(5, 2),
+(5, 1),
+(5, 4);
 
 -- --------------------------------------------------------
 
@@ -155,8 +250,10 @@ INSERT INTO `utente` (`mail`, `password`, `nome`, `cognome`, `dataNascita`, `tel
 ('Duccio.chellini@gmail.com', 'duccio1', 'Duccio', 'Chellini', '2002-11-29', '3311144045', 'AY850815', 0),
 ('florencehotel.admin@mail.it', 'admin', 'Admin', 'Hotel', '2000-01-01', '198735827565', '534383846', 1),
 ('g.rossi@libero.it', 'password', 'giorgio', 'rossi', '1985-05-08', '3315533645', 'AY372944', 0),
+('gabulianne@gmail.com', 'password', 'Anne', 'Gabuli', '1965-03-12', '+39 3347699123', 'vggnnh xtjut', 0),
 ('giovanni.storti@edu.it', 'passwordgiovanni', 'Giovanni', 'Storti', '1968-12-05', '3335568454', 'FI364864A', 0),
 ('marco64.chellini@gmail.com', 'florencia21', 'marco', 'chellini', '1964-04-02', '3454009533', 'av cfr556 456', 0),
+('nerouniverso@libero.it', 'pippo', 'pippo', 'pippi', '1962-11-01', '335354581', 'CI RETYS543', 0),
 ('petalessio@yahoo.it', 'Fiorentina', 'Alessio', 'Petrucci', '2001-11-17', '31481565555', 'Patente', 0),
 ('samuelconroi@mail.com', 'password', 'samuel', 'conroi', '2000-07-04', '3773781929', '2345', 0);
 
@@ -184,6 +281,26 @@ ALTER TABLE `prenotazione`
   ADD KEY `camera` (`camera`);
 
 --
+-- Indexes for table `servizi`
+--
+ALTER TABLE `servizi`
+  ADD PRIMARY KEY (`codServizio`);
+
+--
+-- Indexes for table `serviziCamera`
+--
+ALTER TABLE `serviziCamera`
+  ADD KEY `camera` (`camera`),
+  ADD KEY `servizio` (`servizio`);
+
+--
+-- Indexes for table `serviziHotel`
+--
+ALTER TABLE `serviziHotel`
+  ADD KEY `hotel` (`hotel`),
+  ADD KEY `servizio` (`servizio`);
+
+--
 -- Indexes for table `utente`
 --
 ALTER TABLE `utente`
@@ -209,7 +326,13 @@ ALTER TABLE `hotel`
 -- AUTO_INCREMENT for table `prenotazione`
 --
 ALTER TABLE `prenotazione`
-  MODIFY `codPrenotazione` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `codPrenotazione` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT for table `servizi`
+--
+ALTER TABLE `servizi`
+  MODIFY `codServizio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
@@ -220,6 +343,20 @@ ALTER TABLE `prenotazione`
 --
 ALTER TABLE `prenotazione`
   ADD CONSTRAINT `prenotazione_ibfk_1` FOREIGN KEY (`camera`) REFERENCES `camere` (`codCamera`);
+
+--
+-- Constraints for table `serviziCamera`
+--
+ALTER TABLE `serviziCamera`
+  ADD CONSTRAINT `serviziCamera_ibfk_1` FOREIGN KEY (`camera`) REFERENCES `camere` (`codCamera`),
+  ADD CONSTRAINT `serviziCamera_ibfk_2` FOREIGN KEY (`servizio`) REFERENCES `servizi` (`codServizio`);
+
+--
+-- Constraints for table `serviziHotel`
+--
+ALTER TABLE `serviziHotel`
+  ADD CONSTRAINT `serviziHotel_ibfk_1` FOREIGN KEY (`hotel`) REFERENCES `hotel` (`partitaIva`),
+  ADD CONSTRAINT `serviziHotel_ibfk_2` FOREIGN KEY (`servizio`) REFERENCES `servizi` (`codServizio`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -16,7 +16,9 @@ try {
         echo "<font color='red'>Account non trovato</font><br/>";
         echo "<br/><a href='javascript:self.history.back();'>Riprova</a>";
     } else {
-        saveUser(mysqli_fetch_array($result));
+        $currentUser = mysqli_fetch_array($result);
+        saveUser($currentUser);
+        echo "Bentornato " . $currentUser["nome"] . $currentUser["cognome"];
     }
 } catch (\Throwable $th) {
     echo $th;

@@ -1,5 +1,5 @@
 <?php include_once(__DIR__ . '/../components/header.php'); ?>
-<?php include_once(__DIR__ . '/../components/navbar.php'); ?>
+<?php include_once(__DIR__ . '/../components/navbarExtra.php'); ?>
 <?php include_once(__DIR__ . '/../components/connesioneServer.php');
 require_once(__DIR__ . '/../shared/auth.php');
 getCurrentUser();

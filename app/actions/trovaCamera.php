@@ -1,6 +1,6 @@
 <?php include_once(__DIR__ . '/../components/header.php'); ?>
 <?php include_once(__DIR__ . "/../components/maps.php"); ?>
-<?php include_once(__DIR__ . '/../components/navbar.php'); ?>
+<?php include_once(__DIR__ . '/../components/navbarExtra.php'); ?>
 <?php include_once(__DIR__ . '/../components/connesioneServer.php');
 
 //include_once("config.php");
@@ -44,7 +44,7 @@ try {
 
         while ($row = $result->fetch_assoc()) {
             ?>
-            <div class="col">
+            <div class="col" style="margin-top: 35px;">
                 <div class="card mb-3">
                     <div class="card-header">
                         <b>
@@ -70,11 +70,35 @@ try {
                     </h5>
                     <ul class="list-group list-group-flush">
                         <?php
-                                    $sqlServiziHotel = "SELECT *
+                                    $sqlServiziCamera = "SELECT *
                                                             FROM camere, servizi, serviziCamera
                                                             WHERE camere.codCamera = serviziCamera.camera
                                                             AND servizi.codServizio = serviziCamera.servizio
                                                             AND camere.codCamera = " . $row['codCamera'];
+
+                                    $resultServizi = $mysqli->query($sqlServiziCamera);
+
+                                    while ($rowServizi = $resultServizi->fetch_assoc()) {
+                                        ?>
+                            <li class='list-group-item'>
+                                <?php echo $rowServizi['nomeServizio'] ?>
+                                <i class='<?php echo $rowServizi["icona"] ?>'></i>
+                            </li>
+                        <?php
+                                    }
+                                    ?>
+                        <h5 class="card-subtitle">
+                            servizi hotel
+                        </h5>
+
+
+                        <?php
+                                    $sqlServiziHotel = "SELECT *
+                                    FROM camere, serviziHotel, servizi
+                                    WHERE camere.hotel = serviziHotel.hotel
+                                    AND servizi.codServizio = serviziHotel.servizio
+                                    AND camere.hotel = " . $row['hotel'] .
+                                    " GROUP BY servizi.nomeServizio";
 
                                     $resultServizi = $mysqli->query($sqlServiziHotel);
 
@@ -88,11 +112,6 @@ try {
                                     }
 
                                     ?>
-                        <li class="list-group-item">
-                            An item
-                        </li>
-                        <li class="list-group-item">A second item</li>
-                        <li class="list-group-item">A third item</li>
                     </ul>
                     <div class="card-footer d-flex justify-content-evenly">
                         <a href="tel:<?php echo $row["telefono"] ?>" type="button" class="btn btn-outline-secondary">

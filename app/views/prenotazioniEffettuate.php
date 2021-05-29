@@ -1,6 +1,6 @@
 <?php include_once(__DIR__ . '/../components/header.php'); ?>
 <?php include_once(__DIR__ . "/../components/maps.php"); ?>
-<?php include_once(__DIR__ . '/../components/navbar.php'); ?>
+<?php include_once(__DIR__ . '/../components/navbarExtra.php'); ?>
 <?php include_once(__DIR__ . '/../components/connesioneServer.php'); ?>
 <?php include_once(__DIR__ . '/../components/header.php');
 require_once(__DIR__ . '/../shared/auth.php');
@@ -41,7 +41,7 @@ try {
                             <?php echo maps($row["nome"]); ?>
                         </p>
                     </div>
-                    <div class="card-footer d-flex justify-content-evenly">
+                    <!--<div class="card-footer d-flex justify-content-evenly">
                         <a href="mailto:<?php echo $row["mail"] ?>" type="button" class="btn btn-outline-secondary">
                             <i class="bi bi-envelope"></i>
                             Paga
@@ -54,7 +54,7 @@ try {
                             <i class="bi bi-cart-check"></i>
                             Elimina
                         </a>
-                    </div>
+                    </div>-->
                 </div>
             </div>
 <?php

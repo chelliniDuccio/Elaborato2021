@@ -21,7 +21,7 @@ getCurrentUser();
                 <?php if ($is_logged) : ?>
                     <button class="btn btn-outline-secondary" type=btn btn-outline-secondary" onclick="location.href='./views/trovaCamera.php'">Ricerca </button>
                     <button class="btn btn-outline-secondary" type=btn btn-outline-secondary" onclick="location.href='./views/prenotazioniEffettuate.php'">Prenotazioni</button>
-                    <button class="btn btn-outline-secondary" type="button" onclick="location.href='./views/login.php'">Esci</button>
+                    <button class="btn btn-outline-secondary" type="button" onclick="location.href='./actions/esci.php'">Esci</button>
                     <i class="far fa-user"></i>
                 <?php endif; ?>
                 <?php if ($is_logged && $is_admin) : ?>

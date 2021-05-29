@@ -1,5 +1,7 @@
 <?php include_once(__DIR__ . '/../components/header.php'); ?>
+
 <link href="../css/layout.css" rel="stylesheet">
+<html>
 
 <body class="text-center">
     <div class="card m-auto">
@@ -54,3 +56,5 @@
     </div>
 
 </body>
+
+</html>

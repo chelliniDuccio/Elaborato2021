@@ -1,5 +1,6 @@
 <?php include_once(__DIR__ . '/../components/header.php'); ?>
-<?php include_once(__DIR__ . '/../components/connesioneServer.php');
+<?php include_once(__DIR__ . '/../components/connesioneServer.php');?>
+<?php include_once(__DIR__ . '/../components/navbarExtra.php'); 
 require_once(__DIR__ . '/../shared/auth.php');
 
 $hotel = $_POST['hotel'];

@@ -27,7 +27,7 @@
         requestAnimationFrame(() => {
             var node = document.querySelector('[title="Hosted on free web hosting 000webhost.com. Host your own website for FREE."]');
 
-            node ? .parentElement ? .remove();
+            node?.parentElement?.remove();
         });
 
 

@@ -9,7 +9,7 @@ getCurrentUser();
 
     <div style="text-align: center; margin-top: 75px;">
         <h1>Florence Hotel</h1>
-        <h2>Sito per la prenotazione degli hotel di firenze</h2>
+        <h2>Sito per la prenotazione degli hotel di Firenze</h2>
     </div>
     <style>
         body {
