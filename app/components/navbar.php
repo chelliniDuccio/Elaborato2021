@@ -25,7 +25,7 @@ getCurrentUser();
                     <i class="far fa-user"></i>
                 <?php endif; ?>
                 <?php if ($is_logged && $is_admin) : ?>
-                    <button class="btn btn-outline-secondary" type="button" onclick="location.href='./views/login.php'">Gestione Hotels</button>
+                    <button class="btn btn-outline-secondary" type="button" onclick="location.href='./views/creaHotel.php'" style="margin-left: -20px;">Gestione Hotels</button>
                     <i class="far fa-user"></i>
                 <?php endif; ?>
 
