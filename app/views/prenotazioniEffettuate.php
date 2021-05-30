@@ -12,7 +12,8 @@ try {
             FROM prenotazione, camere, hotel
             WHERE prenotazione.camera = camere.codCamera
             AND prenotazione.utente = '$mail'
-            AND camere.hotel = hotel.partitaIva";
+            AND camere.hotel = hotel.partitaIva
+            ORDER BY prenotazione.dataInizio, camere.hotel";
 
     $result = $mysqli->query($sql);
 
@@ -41,20 +42,16 @@ try {
                             <?php echo maps($row["nome"]); ?>
                         </p>
                     </div>
-                    <!--<div class="card-footer d-flex justify-content-evenly">
-                        <a href="mailto:<?php echo $row["mail"] ?>" type="button" class="btn btn-outline-secondary">
-                            <i class="bi bi-envelope"></i>
-                            Paga
-                        </a>
-                        <a href="prenotaCamera.php?<?php echo http_build_query(array(
-                                                                    'dataInizio' => $dataInizio,
-                                                                    'dataFine' => $dataFine,
-                                                                    'camera' => $row["codCamera"],
-                                                                )) ?>" type="button" class="btn btn-outline-secondary">
-                            <i class="bi bi-cart-check"></i>
-                            Elimina
-                        </a>
-                    </div>-->
+                    <div class="card-footer text-muted">
+                        <span>
+                            check-in :
+                            <?php echo $row["dataInizio"] ?>
+                        </span>
+                        <span class="ms-3">
+                            check-out :
+                            <?php echo $row["dataFine"] ?>
+                        </span>
+                    </div>
                 </div>
             </div>
 <?php
