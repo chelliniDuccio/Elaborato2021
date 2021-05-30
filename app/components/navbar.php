@@ -24,8 +24,9 @@ getCurrentUser();
                     <button class="btn btn-outline-secondary" type="button" onclick="location.href='./actions/esci.php'">Esci</button>
                     <i class="far fa-user"></i>
                 <?php endif; ?>
-                <?php if ($is_logged && $is_admin) : ?>
-                    <button class="btn btn-outline-secondary" type="button" onclick="location.href='./views/creaHotel.php'" style="margin-left: -20px;">Gestione Hotels</button>
+                <?php if ($is_admin) : ?>
+                    <button class="btn btn-outline-secondary" type="button" onclick="location.href='./views/creaHotel.php'" style="margin-left: -20px;">Gestione hotel</button>
+                    <button class="btn btn-outline-secondary" type="button" onclick="location.href='./views/creaStanza.php'">Gestione stanze</button>
                     <i class="far fa-user"></i>
                 <?php endif; ?>
 

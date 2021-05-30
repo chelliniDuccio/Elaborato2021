@@ -42,7 +42,7 @@
                         </div>
                         <div class="col-md-12">
                             <label for="customRange2" class="form-label">Costo massimo (per notte)</label>
-                            <input type="range" class="form-range" min="20" max="300" step="20" id="priceRange" oninput="this.nextElementSibling.value = this.value" name="costoMassimo">
+                            <input type="range" class="form-range" min="20" max="400" step="20" id="priceRange" oninput="this.nextElementSibling.value = this.value" name="costoMassimo">
                             <output>costo</output>
                             <i class="bi bi-currency-euro m-2"></i>
                         </div>

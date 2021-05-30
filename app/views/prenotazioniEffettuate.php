@@ -41,6 +41,12 @@ try {
                         <p class="card-text">
                             <?php echo maps($row["nome"]); ?>
                         </p>
+                        <p class="card-text text-center">
+                            <button class="btn btn-primary">
+                                <i class="far fa-calendar"></i>
+                                Aggiungi al calendrio
+                            </button>
+                        </p>
                     </div>
                     <div class="card-footer text-muted">
                         <span>
