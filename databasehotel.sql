@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 28, 2021 at 03:19 PM
+-- Generation Time: Jun 08, 2021 at 04:06 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.23
 
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `id16007570_hotel`
 --
-CREATE DATABASE IF NOT EXISTS `id16007570_hotel` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-USE `id16007570_hotel`;
 
 -- --------------------------------------------------------
 
@@ -46,39 +44,34 @@ INSERT INTO `camere` (`codCamera`, `hotel`, `numCamera`, `costoNotte`, `tipoCame
 (1, 1, 6, 140, 'singola'),
 (2, 1, 1, 150, 'singola'),
 (3, 1, 2, 140, 'singola'),
-(4, 1, 3, 40, 'singola'),
-(5, 1, 4, 70, 'singola'),
-(6, 1, 5, 90, 'singola'),
+(4, 1, 3, 140, 'singola'),
+(5, 1, 4, 170, 'singola'),
+(6, 1, 5, 190, 'singola'),
 (7, 2, 1, 150, 'singola'),
 (8, 2, 2, 140, 'singola'),
-(9, 2, 3, 40, 'singola'),
-(10, 2, 4, 70, 'matrimoniale'),
-(11, 2, 5, 90, 'doppia'),
-(12, 3, 1, 150, 'singola'),
-(13, 3, 2, 220, 'doppia'),
-(14, 3, 3, 70, 'doppia'),
-(15, 3, 4, 100, 'doppia'),
-(16, 3, 5, 130, 'doppia'),
-(17, 4, 1, 150, 'singola'),
-(18, 4, 2, 220, 'matrimoniale'),
-(19, 4, 3, 70, 'doppia'),
-(20, 4, 4, 100, 'doppia'),
-(21, 4, 5, 130, 'doppia'),
+(9, 2, 3, 240, 'singola'),
+(10, 2, 4, 230, 'matrimoniale'),
+(11, 2, 5, 220, 'doppia'),
+(12, 3, 1, 90, 'singola'),
+(13, 3, 2, 120, 'doppia'),
+(14, 3, 3, 110, 'doppia'),
+(15, 3, 4, 140, 'doppia'),
+(16, 3, 5, 100, 'doppia'),
+(17, 4, 1, 35, 'singola'),
+(18, 4, 2, 60, 'matrimoniale'),
+(19, 4, 3, 50, 'doppia'),
+(20, 4, 4, 70, 'doppia'),
+(21, 4, 5, 70, 'doppia'),
 (22, 5, 1, 200, 'doppia'),
 (23, 5, 2, 300, 'suite'),
-(24, 5, 3, 75, 'matrimoniale'),
+(24, 5, 3, 375, 'matrimoniale'),
 (25, 5, 4, 110, 'matrimoniale'),
 (26, 5, 5, 140, 'matrimoniale'),
-(27, 6, 1, 200, 'doppia'),
-(28, 6, 2, 300, 'suite'),
-(29, 6, 3, 120, 'suite'),
-(30, 6, 4, 170, 'suite'),
-(31, 6, 5, 200, 'suite'),
 (32, 7, 1, 200, 'matrimoniale'),
-(33, 7, 3, 120, 'suite'),
-(34, 7, 4, 170, 'suite'),
-(35, 7, 5, 200, 'suite'),
-(36, 8, 1, 300, 'suite');
+(33, 7, 3, 320, 'suite'),
+(34, 7, 4, 270, 'suite'),
+(35, 7, 5, 400, 'suite'),
+(37, 1, 15, 380, 'Suite');
 
 -- --------------------------------------------------------
 
@@ -104,7 +97,7 @@ INSERT INTO `hotel` (`nome`, `stelle`, `partitaIva`, `telefono`, `mail`) VALUES
 ('Italiana Hotels Florence', 3, 3, 53644262, 'italianahotel@mail.it'),
 ('Rosary Garden Hotel', 2, 4, 45836453, 'rosarygarden@mail.it'),
 ('Plaza Hotel Lucchesi', 5, 5, 34574763, 'hotelpontevecchio@mail.it'),
-('Firenze hotel', 1, 7, 5454546, 'hirenzehotel@mail.it');
+('Firenze hotel', 1, 7, 5454546, 'firenzehotel@mail.it');
 
 -- --------------------------------------------------------
 
@@ -130,7 +123,11 @@ INSERT INTO `prenotazione` (`codPrenotazione`, `camera`, `dataInizio`, `dataFine
 (17, 7, '2021-05-19', '2021-05-26', 'marco64.chellini@gmail.com'),
 (19, 14, '2021-06-18', '2021-06-30', 'gabulianne@gmail.com'),
 (20, 6, '2021-05-27', '2021-05-29', 'Duccio.chellini@gmail.com'),
-(21, 14, '2021-05-28', '2021-05-29', 'nerouniverso@libero.it');
+(21, 14, '2021-05-28', '2021-05-29', 'nerouniverso@libero.it'),
+(22, 4, '2021-05-29', '2021-05-30', 'florencehotel.admin@mail.it'),
+(23, 10, '2021-06-02', '2021-06-06', 'Dppuccio.chellini@gmail.com'),
+(24, 11, '2021-12-20', '2021-12-23', 'petalessio@yahoo.it'),
+(25, 5, '2021-05-28', '2021-06-01', 'Duccio.chellini@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -314,7 +311,7 @@ ALTER TABLE `utente`
 -- AUTO_INCREMENT for table `camere`
 --
 ALTER TABLE `camere`
-  MODIFY `codCamera` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `codCamera` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `hotel`
@@ -326,7 +323,7 @@ ALTER TABLE `hotel`
 -- AUTO_INCREMENT for table `prenotazione`
 --
 ALTER TABLE `prenotazione`
-  MODIFY `codPrenotazione` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `codPrenotazione` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `servizi`
