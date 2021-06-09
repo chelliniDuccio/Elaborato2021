@@ -9,7 +9,7 @@ if ($local) {
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "flixbus";
+    $dbname = "hotel";
 }
 
 // Create connection

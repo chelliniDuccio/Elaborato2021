@@ -16,7 +16,7 @@ try {
     echo "Grazie " . $current_user['nome'] . " " . $current_user['cognome'] . " per la tua nuova prenotazione"
     ?>
     <a href="/../Hotel/index.php" type="button" class="btn btn-outline-secondary">
-        Torna indiero
+        Torna alla pagina home
     </a>
 <?php
 } catch (\Throwable $th) {

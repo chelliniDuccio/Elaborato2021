@@ -1,17 +1,15 @@
 <?php include_once(__DIR__ . '/../components/header.php'); ?>
 <?php include_once(__DIR__ . '/../components/navbarExtra.php'); ?>
 <?php include_once(__DIR__ . '/../components/connesioneServer.php');
-require_once(__DIR__ . '/../shared/auth.php');
 
-$hotel = $_POST['hotel'];
-$tipo = $_POST['tipo'];
-$camera = $_POST['camera'];
-$costo = $_POST['costo'];
+$codPrenotazione = $_GET["codPrenotazione"];
 
 try {
-    $insert = "INSERT INTO camere(hotel,numCamera,costoNotte,tipoCamera) 
-                    VALUES('$hotel','$camera','$costo','$tipo')";
-    $result = mysqli_query($mysqli, $insert);
+    $sql = "DELETE FROM prenotazione
+            WHERE codPrenotazione = $codPrenotazione";
+
+    $result = $mysqli->query($sql);
+    echo "Prenotazione eliminata"
     ?>
     <a href="/../Hotel/index.php" type="button" class="btn btn-outline-secondary">
         Torna alla pagina home

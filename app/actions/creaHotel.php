@@ -15,7 +15,7 @@ try {
     $result = mysqli_query($mysqli, $insert);
     ?>
     <a href="/../Hotel/index.php" type="button" class="btn btn-outline-secondary">
-        Torna indiero
+        Torna alla pagina home
     </a>
 <?php
 } catch (\Throwable $th) {

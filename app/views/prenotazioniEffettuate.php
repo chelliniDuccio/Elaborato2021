@@ -34,8 +34,6 @@ function parseDate($dateRaw, $addDay = false)
     return str_replace("-", "", $date->format('Y-m-d'));
 }
 
-//https://calendar.google.com/calendar/u/0/r/eventedit?text=piippo&details=wpfoeiwpoeipofi&location=via+roma+22+firenze&dates=20210507/20210506&pli=1
-//https://calendar.google.com/calendar/u/0/r/eventeditdates=20210507%2F20210506&details=wpfoeiwpoeipofi&location=via+roma+22+firenze&text=piippo&pli=1
 
 $mail = $current_user['mail'];
 try {
@@ -78,9 +76,12 @@ try {
                                 <i class="far fa-calendar"> </i>
                                 Aggiungi al calendrio
                             </a>
+                            <a class="btn btn-primary" href='<?php echo "../actions/eliminaPrenotazione.php?codPrenotazione=" . $row["codPrenotazione"] ?>'>
+                                Elimina prenotazione
+                            </a>
                         </p>
                     </div>
-                    <div class="card-footer text-muted">
+                    <div class=" card-footer text-muted">
                         <span>
                             check-in :
                             <?php echo $row["dataInizio"] ?>
