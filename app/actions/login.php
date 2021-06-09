@@ -18,7 +18,7 @@ try {
     } else {
         $currentUser = mysqli_fetch_array($result);
         saveUser($currentUser);
-        echo "Bentornato " . $currentUser["nome"] . $currentUser["cognome"];
+        echo "Bentornato " . $currentUser["nome"] . " " . $currentUser["cognome"];
         ?>
         <a href="/../Hotel/index.php" type="button" class="btn btn-outline-secondary">
             Torna indiero

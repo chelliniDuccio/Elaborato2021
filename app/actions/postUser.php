@@ -14,32 +14,7 @@ $documento = $_POST['documento'];
 
 
 // checking empty fields
-if (empty($mail) || empty($password) || empty($nome) | empty($cognome) || empty($telefono) || empty($documento)) {
-    if (empty($mail)) {
-        echo "<font color='red'>Campo mail non compilato.</font><br/>";
-    }
-    if (empty($password)) {
-        echo "<font color='red'>Campo passsword non compilato.</font><br/>";
-    }
-    if (empty($nome)) {
-        echo "<font color='red'>Campo nome non compilato.</font><br/>";
-    }
-    if (empty($cognome)) {
-        echo "<font color='red'>Campo cognome non compilato.</font><br/>";
-    }
-    if (empty($telefono)) {
-        echo "<font color='red'>Campo telefono non compilato.</font><br/>";
-    }
-    if (empty($dataNascita)) {
-        echo "<font color='red'>Campo data di nascita non compilato.</font><br/>";
-    }
-    if (empty($documento)) {
-        echo "<font color='red'>Campo documento non compilato.</font><br/>";
-    }
-    //link to the previous page
-    echo "<br/><a href='javascript:self.history.back();'>Go Back</a>";
-} else {
-    // if all the fields are filled (not empty)             
+            
     //insert data to database
     try {
         //code... 
@@ -114,4 +89,4 @@ if (empty($mail) || empty($password) || empty($nome) | empty($cognome) || empty(
         //throw $th;
         echo $th;
     }
-}
+

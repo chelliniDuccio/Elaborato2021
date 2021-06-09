@@ -6,6 +6,37 @@
 require_once(__DIR__ . '/../shared/auth.php');
 getCurrentUser();
 
+function buildCalendar($row)
+{
+    $baseUrl = 'https://calendar.google.com/calendar/u/0/r/eventedit';
+
+    $query = http_build_query(array(
+        'dates' => parseDate($row["dataInizio"]) . "/" . parseDate($row["dataFine"], true),
+        'details' => "◉ Hotel: " . $row["nome"] . "\n"
+            . "◉ Camera: " . $row["numCamera"] . "\n"
+            . "◉ Costo totale: " . $row["costoTotale"] . "€" . "\n"
+            . "◉ Codice prenotazione: " . $row["codPrenotazione"],
+        'location' => $row["nome"] . ", Firenze",
+        'text' =>  "Prenotazione " . $row["nome"],
+        'pli' => "1"
+    ));
+
+    return $baseUrl . "?" . $query;
+}
+
+function parseDate($dateRaw, $addDay = false)
+{
+    $date = new DateTime($dateRaw);
+    if ($addDay) {
+        $date->modify('+1 day');
+    }
+
+    return str_replace("-", "", $date->format('Y-m-d'));
+}
+
+//https://calendar.google.com/calendar/u/0/r/eventedit?text=piippo&details=wpfoeiwpoeipofi&location=via+roma+22+firenze&dates=20210507/20210506&pli=1
+//https://calendar.google.com/calendar/u/0/r/eventeditdates=20210507%2F20210506&details=wpfoeiwpoeipofi&location=via+roma+22+firenze&text=piippo&pli=1
+
 $mail = $current_user['mail'];
 try {
     $sql = "SELECT *,((prenotazione.dataFine - prenotazione.dataInizio) * camere.costoNotte) AS costoTotale
@@ -18,7 +49,8 @@ try {
     $result = $mysqli->query($sql);
 
     if ($result->num_rows > 0) {
-        echo '<div class="container" style = "margin-top: 25px;"> <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">';
+        echo '<div class="container" style = "margin-top: 25px;"> 
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">';
         while ($row = $result->fetch_assoc()) {
             ?>
             <div class="col">
@@ -42,10 +74,10 @@ try {
                             <?php echo maps($row["nome"]); ?>
                         </p>
                         <p class="card-text text-center">
-                            <button class="btn btn-primary">
-                                <i class="far fa-calendar"></i>
+                            <a class="btn btn-primary" target="_blank" href="<?php echo buildCalendar($row) ?>">
+                                <i class="far fa-calendar"> </i>
                                 Aggiungi al calendrio
-                            </button>
+                            </a>
                         </p>
                     </div>
                     <div class="card-footer text-muted">
@@ -65,7 +97,7 @@ try {
         }
         echo '         </div> </div> ';
     } else {
-        echo 'nessun risultato trovato';
+        echo 'Non è stata trovata nessuna prenotazione a tuo nome';
     }
 } catch (\Throwable $th) {
     //throw $th;

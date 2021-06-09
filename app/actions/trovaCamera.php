@@ -98,7 +98,7 @@ try {
                                     WHERE camere.hotel = serviziHotel.hotel
                                     AND servizi.codServizio = serviziHotel.servizio
                                     AND camere.hotel = " . $row['hotel'] .
-                                    " GROUP BY servizi.nomeServizio";
+                                        " GROUP BY servizi.nomeServizio";
 
                                     $resultServizi = $mysqli->query($sqlServiziHotel);
 
