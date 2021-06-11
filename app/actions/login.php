@@ -20,13 +20,24 @@ try {
     } else {
         $currentUser = mysqli_fetch_array($result);
         saveUser($currentUser);
-        echo "Bentornato " . $currentUser["nome"] . " " . $currentUser["cognome"];
         ?>
-        <a href="/../Hotel/index.php" type="button" class="btn btn-outline-secondary">
-            Torna alla pagina home
-        </a>
+        <div class="row mx-auto text-center my-5">
+            <div class="col-sm-12 text-center mx-auto">
+                <div class="card text-center mx-auto" style="width:28rem">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <?php echo "Bentornato " . $currentUser["nome"] . " " . $currentUser["cognome"];   ?>
+                        </h5>
+                        <p class="card-text"></p>
+                        <a href="/../Hotel/index.php"" class=" btn btn-primary">Torna alla pagina home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 <?php
     }
 } catch (\Throwable $th) {
     echo $th;
 }
+ob_end_flush();
+?>

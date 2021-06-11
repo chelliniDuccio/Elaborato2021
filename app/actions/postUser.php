@@ -26,7 +26,6 @@ try {
     saveUserByMail($mail);
 
     echo "Grazie per aver creato un nuovo account " . $nome . " " . $cognome;
-
     ?>
     <div class="container-fluid">
         <table class="table">

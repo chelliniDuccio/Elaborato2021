@@ -9,7 +9,7 @@ if ($local) {
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "hotel";
+    $dbname = "hotel2";
 }
 
 // Create connection

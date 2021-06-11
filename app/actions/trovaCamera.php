@@ -138,7 +138,23 @@ try {
         }
         echo '         </div> </div> ';
     } else {
-        echo 'nessun risultato trovato';
+        ?>
+        <div class="row mx-auto text-center my-5">
+            <div class="col-sm-12 text-center mx-auto">
+                <div class="card text-center mx-auto" style="width:38rem">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <?php 
+                            echo "Nessun risultato corrisponde alle tue richieste"; 
+                            ?>
+                        </h5>
+                        <p class="card-text"></p>
+                        <a href="/../Hotel/index.php"" class=" btn btn-primary">Torna alla pagina home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+<?php
     }
 } catch (\Throwable $th) {
     //throw $th;

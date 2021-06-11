@@ -55,18 +55,18 @@ try {
                 <div class="card mb-3">
                     <div class="card-header">
                         <b>
-                            <?php echo $row["nome"] . " " . $row["stelle"] . "★";      ?>
+                            <?php echo $row["nome"] . " " . $row["stelle"] . "★"; ?>
                         </b>
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">
-                            <?php echo "Camera: " . $row["numCamera"];      ?>
+                            <?php echo "Camera: " . $row["numCamera"]; ?>
                         </h5>
                         <p class="card-text">
-                            <?php echo "Tipo: " . $row["tipoCamera"];      ?>
+                            <?php echo "Tipo: " . $row["tipoCamera"]; ?>
                         </p>
                         <p class="card-text">
-                            <?php echo "Costo totale: " . $row["costoTotale"] . "€";      ?>
+                            <?php echo "Costo totale: " . $row["costoTotale"] . "€"; ?>
                         </p>
                         <p class="card-text">
                             <?php echo maps($row["nome"]); ?>
@@ -93,12 +93,24 @@ try {
                     </div>
                 </div>
             </div>
-<?php
+        <?php
 
-        }
-        echo '         </div> </div> ';
-    } else {
-        echo 'Non è stata trovata nessuna prenotazione a tuo nome';
+                }
+                echo '         </div> </div> ';
+            } else {
+                ?>
+        <div class="row mx-auto text-center my-5">
+            <div class="col-sm-12 text-center mx-auto">
+                <div class="card text-center mx-auto" style="width:28rem">
+                    <div class="card-body">
+                        <h5 class="card-title">Bentornato Duccio Chellini</h5>
+                        <p class="card-text"></p>
+                        <a href="mettere href corretto" class="btn btn-primary">Torna alla pagina home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+<?php
     }
 } catch (\Throwable $th) {
     //throw $th;

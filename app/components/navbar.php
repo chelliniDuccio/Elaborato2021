@@ -10,7 +10,7 @@ getCurrentUser();
     <nav class="navbar navbar navbar-dark bg-dark">
         <div class="align-items-center d-flex " style="width: 100%; margin-left: 10px;">
             <img src="https://i.pinimg.com/236x/ae/77/fb/ae77fbaba06ef1b667c9316fbf45f064.jpg" alt="" width="40" heigh="40" class="d-inline-block align-text-top">
-            <a class="navbar-brand me-auto" style="margin-left: 10px;" href='../index.php'>Florence Hotel</a>
+            <a class="navbar-brand me-auto" style="margin-left: 10px;">Florence Hotel</a>
             <div class="" style="margin-right: 10px;">
                 <?php if (!$is_logged) : ?>
                     <button class="btn btn-outline-secondary" type="button" onclick="location.href='./views/newAccount.php'">
@@ -37,7 +37,7 @@ getCurrentUser();
                     </button>
                 <?php endif; ?>
                 <?php if ($is_admin) : ?>
-                    <button class="btn btn-outline-secondary" type="button" onclick="location.href='./views/creaHotel.php'" >Gestione hotel</button>
+                    <button class="btn btn-outline-secondary" type="button" onclick="location.href='./views/creaHotel.php'">Gestione hotel</button>
                     <button class="btn btn-outline-secondary" type="button" onclick="location.href='./views/creaStanza.php'">Gestione stanze</button>
                     <i class="far fa-user"></i>
                 <?php endif; ?>
