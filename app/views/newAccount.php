@@ -4,8 +4,10 @@
 <body class="text-center">
     <div class="card m-auto">
         <div class="card-body">
+            <small>I campi senza * sono non obligatori</small>
             <main class="form-signin">
                 <form class="row g-3 needs-validation" action="../actions/postUser.php" novalidate method="POST">
+
                     <div class="col-md-12">
                         <label for="mail" class="col-form-label">Email *</label>
                         <div class="col-12">
@@ -24,7 +26,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row g-1">   
+                    <div class="row g-1">
                         <div class="col-md-6">
                             <label for="nome" class="col-form-label">Nome *</label>
                             <input type="text" class="form-control" minlength="3" placeholder="Nome" name="nome" id="nome" required>

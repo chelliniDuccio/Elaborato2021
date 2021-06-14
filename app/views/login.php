@@ -19,11 +19,6 @@
                             <input class="form-control" type="password" placeholder="password" name="password" id="password" required>
                         </div>
                     </div>
-                    <div class="checkbox mb-3">
-                        <label>
-                            <input type="checkbox" value="remember-me"> Remember me
-                        </label>
-                    </div>
                     <button class="w-100 btn btn-lg btn-primary" type="submit">Accedi</button>
                 </form>
         </div>

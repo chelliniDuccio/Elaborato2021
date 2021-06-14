@@ -103,9 +103,9 @@ try {
             <div class="col-sm-12 text-center mx-auto">
                 <div class="card text-center mx-auto" style="width:28rem">
                     <div class="card-body">
-                        <h5 class="card-title">Bentornato Duccio Chellini</h5>
+                        <h5 class="card-title">Nessuna prenotazione trovata a tuo nome</h5>
                         <p class="card-text"></p>
-                        <a href="mettere href corretto" class="btn btn-primary">Torna alla pagina home</a>
+                        <a href="/../Hotel/index.php" class="btn btn-primary">Torna alla pagina home</a>
                     </div>
                 </div>
             </div>
