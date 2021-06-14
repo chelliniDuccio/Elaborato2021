@@ -77,7 +77,46 @@
                         </select>
                     </div>
                     </fieldset>
-                    <button type="invio" name="submit" class="btn btn-primary">Invio</button>
+                    <div class="w-full">
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Cookie policy e privacy</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body text-justify">
+                                        <p>
+                                            Come molti altri siti, florence hotels potrebbe archiviare o recuperare informazioni dal browser, soprattutto sotto forma di cookie. Tali informazioni possono riguardare l'utente, le sue preferenze o il dispositivo di accesso a Internet (computer, tablet o cellulare) e vengono utilizzate principalmente per adeguare il funzionamento del sito alle aspettative dell'utente, offrendo un'esperienza di navigazione più personalizzata e memorizzando le scelte effettuate in precedenza.
+                                        </p>
+                                        <p>
+                                            Di seguito è possibile saperne di più sui vari modi di utilizzo dei cookie. Se lo si desidera, è possibile impedire il salvataggio dei cookie. Tuttavia, in questo caso l'utilizzo del sito e dei servizi offerti potrebbe risultarne compromesso.
+                                        </p>
+                                        <h4>
+                                            Cookie di autenticazione
+                                        </h4>
+                                        <p>
+                                            Questi cookie sono necessari al corretto accesso e navigazione nell’area riservata del sito.
+                                        </p>
+
+                                        <h4>Cookie di targeting </h4>
+                                        <p>
+                                            Questi cookie consentono di segnalare beni di possibile interesse e memorizzare le preferenze dell'utente.
+                                        </p>
+                                        <h4> Rinuncia ai cookie </h4>
+                                        <p>
+                                            In caso di preoccupazioni sull'utilizzo dei cookie, è possibile intervenire ed impedirne l'impostazione, ad esempio modificando la configurazione del browser per bloccarne l’uso. Per informazioni dettagliate sulla procedura necessaria è possibile consultare la guida del proprio browser.
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <a class="link-primary pe-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Cliccando registrati accetti le privacy policy
+                        </a>
+                    </div>
+                    <button type="invio" name="submit" class="btn btn-primary">Registrati</button>
                 </form>
                 <!--<p style="text-align:center;"><small>Compilare obbligatoriamente i campi con *</small></p>-->
             </main>
